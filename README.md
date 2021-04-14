@@ -1,2 +1,4 @@
-# Snake-Game
-It is an interactive terminal based game without any graphic library  using c language.
+# Project Information
+
+* Add a brief discription about the project
+* Add the information about extra folders or files added
