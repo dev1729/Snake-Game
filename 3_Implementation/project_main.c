@@ -1,112 +1,87 @@
-#include <calculator_operations.h>
+#include "phonebook.h"
+void phone_book_menu();
 
-/* Status of the operation requested */
-#define VALID   (1)
-#define INVALID (0)
+int main(){
 
-/* Calculator operation requested by user*/
-unsigned int calculator_operation = 0;
-
-/* Operands on which calculation is performed */
-int calculator_operand1 = 0;
-int calculator_operand2 = 0;
-
-/* Valid operations */
-enum operations{ ADD=1, SUBTRACT, MULTIPLY, DIVIDE, EXIT };
-
-/* Display the menu of operations supported */
-void calculator_menu(void);
-/* Verifies the requested operations validity */
-int valid_operation(int operation);
-
-
-/* Start of the application */
-int main(int argc, char *argv[])
-{
-    printf("\n****Calculator****\n");
-    while(1)
-    {
-        calculator_menu();
-    }
+printf("\n****Calculator****\n");
+while(1){
+    phone_book_menu();
+}
+return 0;
 }
 
-void calculator_menu(void)
-{
-    printf("\nAvailable Operations\n");
-    printf("\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\n5. Exit");
-    printf("\n\tEnter your choice\n");
-   
-     __fpurge(stdin);
-    scanf("%d", &calculator_operation);
-
-    if(EXIT == calculator_operation)
+void phone_book_menu(){
+    printf("\n\n\t\t\t  MENU\t\t\n\n");
+    printf("\t1.Add New contact   \t2.List all contacts  \t3.Search contact  \n\t4.Modify contact  \t5.EXIT \t6.Delete \n");
+    printf("Enter the Respective Number for Coressponding Action ");
+   //__fpurge(stdin);
+    char phonebook_operation;
+    scanf("%c",&phonebook_operation);
+    switch (phonebook_operation)
     {
-        printf("\nThank you. Exiting the Application\n");
-        exit(0);
-    }
-
-    if(INVALID != valid_operation(calculator_operation))
-    {
-        printf("\n\tEnter your Numbers with space between them\n");
-        __fpurge(stdin);
-        scanf("%d %d", &calculator_operand1, &calculator_operand2);
-    }
-    else
-    {
-        printf("\n\t---Wrong choice---\nEnter to continue\n");
-        __fpurge(stdin);
-        getchar();
-        return;
+    case '1':
         
-    }
-    switch(calculator_operation)
-    {
-        case ADD:
-            printf("\n\t%d + %d = %d\nEnter to continue", 
-            calculator_operand1, 
-            calculator_operand2,
-            add(calculator_operand1, calculator_operand2));
-            
-            __fpurge(stdin);
-            getchar();
-            break;
-        case SUBTRACT:
-            printf("\n\t%d - %d = %d\nEnter to continue", 
-            calculator_operand1, 
-            calculator_operand2,
-            subtract(calculator_operand1, calculator_operand2));
-            
-            __fpurge(stdin);
-            getchar();
-            break;
-        case MULTIPLY:
-            printf("\n\t%d * %d = %d\nEnter to continue", 
-            calculator_operand1, 
-            calculator_operand2,
-            multiply(calculator_operand1, calculator_operand2));
-            
-            __fpurge(stdin);
-            getchar();
-            break;
-        case DIVIDE:
-            printf("\n\t%d / %d = %d\nEnter to continue", 
-            calculator_operand1, 
-            calculator_operand2,
-            divide(calculator_operand1, calculator_operand2));
-            
-            __fpurge(stdin);
-            getchar();
-            break;
-        case 5:
-            exit(0);
-            break;
-        default:
-            printf("\n\t---It should never come here---\n");
-    }
-}
+        printf("Enter first name \n");
+		person p;
+        scanf("%s",p.first_name);
+        printf("Enter last name \n");
+        scanf("%s",p.last_name);
+        printf("Enter address \n");
+        scanf("%s",p.address);
+        printf("Enter Age \n");
+        scanf("%d",&p.age);
+        printf("Enter gender \n");
+        scanf("%s",p.gender);
+        printf("Enter Phone number \n");
+        scanf("%lld",&p.number);
+        printf("Enter country \n");
+        scanf("%s",p.country);
+        printf("Enter mail \n");
+        scanf("%s",p.mail);
+        printf("Enter nick name \n");
+        scanf("%s",p.nick_name);
+        printf("%s",addrecord(p));
 
-int valid_operation(int operation)
-{
-    /* Check if the operation is a valid operation */
-    return ((ADD <= operation) && (EXIT >= operation)) ? VALID: INVALID;
+        break;
+    case '2':
+        if(1==listrecord()){
+            printf("\n Sucessfully printed all contacts .");
+        }
+        else{
+            printf("\nError in printing contacts");
+        }
+        break;
+
+    case '3':
+        printf("\nEnter the contact name to be searched for ");
+        char namee[30];
+        scanf("%s",&namee);
+        if (1==searchrecord(namee)){
+
+        printf("\n printed contact .");
+        }
+        else{
+            printf("\nError in printing contact");
+        }
+        break;
+    case '4':
+        printf("\nEnter the contact name to be modifiedfor ");
+        char name[30];
+        scanf("%s",&name);
+        printf(modify_record(name));
+        break;
+    case '5':
+        exitt();
+        break;
+    case '6':
+        printf("%s",remove_record());
+        break;
+
+      
+
+    default:
+        printf("Something wrong");
+		break;
+    }
+
 }

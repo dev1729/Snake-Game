@@ -1,27 +1,19 @@
-#include<stdio.h>
-#include<string.h>
-#include<math.h>
-#include<stdlib.h>
-typedef struct person
-{
-    char first_name[50];
-    char last_name[50];
-    char address[300];
-    int age;
-    char gender[10];
-    long long  number;
-    char country[30];
-    char mail[30];
-    char nick_name[30];
-}person;
-void addrecord(person new){
+#include "phonebook.h"
+
+char* addrecord(person new){
+   
     FILE *f;
-    f =fopen("file.txt","w");
+    f =fopen("file.txt","a");
     fwrite (&new,sizeof(person ), 1, f);
     fclose (f);
+    return "Record Added Sucessfully";
 
 }
-void listrecord(){
+/**
+ * @brief 
+ * 
+ */
+int listrecord(){
     FILE *inf;
     person p;
     inf = inf = fopen ("file.txt", "r");
@@ -52,11 +44,13 @@ void listrecord(){
         printf("-----------------------------------\n");
     }
     fclose (inf);
+    return 1;
+
 
 }
 
 
-void searchrecord(char name[]){
+int searchrecord(char name[]){
     FILE *inf;
     person  p;
     inf = fopen ("file.txt", "r");
@@ -73,14 +67,15 @@ void searchrecord(char name[]){
         }
     }
     fclose (inf);
+    return 1;
 
 }
-void exitt(){
 
-}
-void modify_record(char name[]){
+
+
+char* modify_record(char name[]){
      FILE *inf;
-    person  p;
+    person  p,s;
     inf = fopen ("file.txt", "r+");
     if (inf == NULL) {
         fprintf(stderr, "\nError to open the file\n");
@@ -89,29 +84,43 @@ void modify_record(char name[]){
     while(fread(&p, sizeof(person), 1, inf))
     {
         if (strcmp(p.first_name,name)==0){
-           person  s = {"z","s","s",22,"s",44,"s","s","s"};
-
-           // s.number=333;
-            //strcpy(s.last_name,"saii");
+         // person  s = {"z","s","s",222,"s",44,"s","s","s"};
+            s=p;
+           s.number=333;
+            strcpy(s.last_name,"saii");
+            fseek(inf,-sizeof(s),SEEK_CUR);
            fwrite (&s,sizeof(s ), 1,inf);
-           printf("%s",s.last_name);
+           listrecord();
+         
+           break;
 
         }
     }
     fclose (inf);
+    return "Modified Sucessfully";
 
 
 }
-void remove_record(){}
-int main(){
-    person pp ={"z","s","s",22,"s",44,"s","s","s"};
-    person p2 ={"a","s","s",21,"s",44,"s","s","s"};
-    addrecord(pp);
-     addrecord(p2);
-    listrecord();
-    searchrecord("a");
-    modify_record("a");
-    searchrecord("a");
-    listrecord();
+char* remove_record(){
+   FILE *inf;
+    person  p,s;
+    if(remove("file.txt")==0){
+       inf = fopen ("temp.txt", "w");
+       fclose(inf);
+       int aa=rename("temp.txt","file.txt");
+      // printf("%d",aa);
+       return "Deleted successfully";
+    }
+    else{
+       return "Unable to delete the file";
+    }
+     
 
+
+}
+void exitt(){
+   system("cls");
+   exit(0);
+   //return "exitted successfully";
+   
 }
