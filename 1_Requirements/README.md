@@ -21,6 +21,7 @@ Since , the application is an terminal based but not an GUI, it will take very l
 # 4W&#39;s and 1&#39;
 
 ## Who:
+This is all the persons who want to save their phone book digitally.
 
 **TBD**
 
