@@ -17,40 +17,40 @@ typedef struct person
     char nick_name[30];
 }person;
 /**
- * @brief 
+ * @brief The function saves the data in trhe file.txt file
  * 
- * @param new 
- * @return char* 
+ * @param new tajes struct as input containing all the data 
+ * @return char* Returns an string if the record saved sucessfully
  */
 char* addrecord(person new);
 /**
- * @brief 
+ * @brief prints all records saved in file.txt file
  * 
- * @return int 
+ * @return int returns an integer value 1 after printing all the data 
  */
 int listrecord();
 /**
- * @brief 
+ * @brief search the respective contact details in the text file 
  * 
- * @param name 
- * @return int 
+ * @param name takes the first_name as an input for seraching the contact
+ * @return int returns 1 if contact founds and printed the details of the contact.
  */
 int searchrecord(char name[]);
 /**
- * @brief 
+ * @brief modifies the contact details
  * 
- * @param name 
- * @return char* 
+ * @param name takes the first_name of the contact that need to be modified.
+ * @return char* returns a string implies the contact have been sucessfully modiefied.
  */
 char* modify_record(char name[]);
 /**
- * @brief 
+ * @brief removes all the records in the data base(file.txt) file
  * 
- * @return char* 
+ * @return char* return a string implies all data removed
  */
 char* remove_record();
 /**
- * @brief 
+ * @brief exit the system with system code 0
  * 
  */
 void  exitt();
