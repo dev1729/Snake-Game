@@ -14,7 +14,7 @@ Since , the application is an terminal based but not an GUI, it will take very l
    * Delete a Contact
    * Search By All Fields
 ## Defining Our System
-![Description](https://drive.google.com/file/d/1zsBa5PBc_tfRgpjL-VFSPdhte0ch9Zrs)
+![Description](https://github.com/dev1729/Snake-Game/blob/main/6_ImagesAndVideos/system_diag.png)
 ## SWOT ANALYSIS
 ![SWOT-Sample](https://embed.creately.com/5SX5jBAMBdE?token=ShmOMqx4vnDUYbZ3&type=svg>)
 
@@ -31,16 +31,16 @@ This is all the persons who want to save their phone book digitally.
 
 ## When:
 The Phone Book at 19th century used to be physical and hence limited. No we can store as many as contacts with as many as custom fields into it.
-**TBD**
+
 
 ## Where:
 In 1996, the first telephone directories went online in the USA. Yellowpages.com and Whitepages.com both saw their start in April. In 1999, the first online telephone directories and people-finding sites such as LookupUK.com went online in the UK.
-**TBD**
+
 
 ## How:
 Using Strcutures we store information given by the user from stdin and save them in an text file encoded. Once can append, remove and perform multiple action on the text file.
 
-**TBD**
+
 
 # Detail requirements
 ## High Level Requirements:
